@@ -1,2 +1,2 @@
 # Awnon-CV
-My beautifully crafted $\LaTeX$ Curricular Vitae
+My beautifully crafted \[\LaTeX\] Curricular Vitae
