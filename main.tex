@@ -1,8 +1,16 @@
 \documentclass[a4paper, 12pt]{article}
-\usepackage[margin=1in]{geometry}
+\usepackage[a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{amsfonts, amsmath, amsthm, graphicx, lipsum}
 \usepackage{fontawesome5}
+
+% \usepackage[backend=biber,style=ieee,sorting=ynt]{biblatex}
+\usepackage[backend=biber,bibstyle=ieee,dashed=false,sorting=ydnt,sortcites=true,natbib=true,defernumbers=true,maxbibnames=99,giveninits=true,uniquename=false]{biblatex}
+\bibliography{pub}
+
 \usepackage{fancyhdr}
 
 \usepackage{hyperref}
@@ -18,10 +26,31 @@
 \headheight=40pt
 \lhead{Curricular Vitae}
 \rhead{Awnon Bhowmik}
+\cfoot{\thepage}
 
 \thispagestyle{empty}
 
+% \renewcommand{\bibliography}{heading=none}
+\renewcommand*{\mkbibnamegiven}[1]{
+\ifitemannotation{highlight}
+{\textbf{#1}}
+{#1}}
+\renewcommand*{\mkbibnamefamily}[1]{
+\ifitemannotation{highlight}
+  {\textbf{#1}}
+  {#1}%
+\ifitemannotation{first}
+  {\textsuperscript{*}}
+  {}%
+\ifitemannotation{corresponding}
+  {$^\dagger$}
+  {}%
+}%%
+
 \begin{document}
+
+% \defbibheading{bibliography}{\section*{}}
+% \bibliographystyle{ieeetr}
 
 \begin{flushleft}
 \large{\textbf{AWNON BHOWMIK}}
@@ -30,18 +59,77 @@
 \begin{flushleft}
 \rule{\textwidth}{1pt}
 \textbf{CONTACT INFORMATION}\\
-\quad\faMapMarker* University of Central Florida\\
-\qquad Department of Mathematics, College of Sciences\\
-\qquad 4393 Andromeda Loop N, Orlando, FL 32816\\
-\qquad Room 418\\~\\
-\quad\faPhone*\quad+1 929 462 8832\qquad\qquad\faGithub\quad\href{https://github.com/awnonbhowmik}{awnonbhowmik}\\
-\qquad\quad +1 347 287 7680\qquad\qquad\faLinkedin\quad\href{https://www.linkedin.com/in/awnon-bhowmik/}{awnon-bhowmik}\\~\\
-\quad\faEnvelope\quad\href{mailto:awnon.bhowmik@ucf.edu}{awnon.bhowmik@ucf.edu}\\
-\quad\qquad\href{mailto:abhowmik901@york.cuny.edu}{abhowmik901@york.cuny.edu}\\~\\
+\quad\faMapMarker*\quad University of Central Florida\\
+\quad\qquad Department of Mathematics, College of Sciences\\
+\quad\qquad 4393 Andromeda Loop N, Orlando, FL 32816\\
+\quad\qquad Room 418\\~\\
+\quad\faPhone*\quad+1 929 462 8832\qquad\qquad\qquad\qquad\faGithub\quad\href{https://github.com/awnonbhowmik}{awnonbhowmik}\\
+\qquad\quad +1 347 287 7680\qquad\qquad\qquad\qquad\faLinkedin\quad\href{https://www.linkedin.com/in/awnon-bhowmik/}{awnon-bhowmik}\\~\\
+\quad\faEnvelope\quad\href{mailto:awnon.bhowmik@ucf.edu}{awnon.bhowmik@ucf.edu}\qquad\qquad\,\,\faGoogle\quad\href{https://scholar.google.com/citations?user=nEdZAFkAAAAJ&hl=en}{Awnon Bhowmik}\\
+\quad\qquad\href{mailto:abhowmik901@york.cuny.edu}{abhowmik901@york.cuny.edu}\qquad\,\,\,\,\faOrcid\quad\href{https://orcid.org/0000-0001-5858-5417}{Awnon Bhowmik}\\~\\
 \quad\faGlobe\quad\href{www.awnonbhowmik.com}{www.awnonbhowmik.com}\\
 \rule{\textwidth}{1pt}
 \end{flushleft}
 
-\newpage
-Hello
+\begin{flushleft}
+\faLightbulb\quad\textbf{RESEARCH INTERESTS}
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{llll}
+      Number Theory & Cryptography & Fractal Geometry\\
+      Computational Mathematics & Mathematical Modeling & Algorithm Design \& Analysis
+    \end{tabular}
+    % \caption{Caption}
+    % \label{tab:my_label}
+\end{table}
+\end{flushleft}
+
+\begin{flushleft}
+\faGraduationCap\quad\textbf{EDUCATION}\\
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{llll}
+         \textbf{Degree} & \textbf{Institution} & \textbf{Concentration} & \textbf{Obtained}\\
+    Ph.D. & University of Central Florida & Mathematics & Expected $2026$\\
+    MS & The City College of New York & Mathematics & December $2021$\\
+    BS & CUNY York College & Major: Mathematics & January $2020$\\
+    & & Minor: Computer Science &\\
+    AS & CUNY BMCC & Mathematics & August 2015
+    \end{tabular}
+    % \caption{Caption}
+    % \label{tab:my_label}
+\end{table}
+\end{flushleft}
+
+\begin{flushleft}
+\faBookOpen\quad\textbf{PUBLICATIONS}
+\nocite{*}
+\printbibliography[heading=none]
+\end{flushleft}
+
+\begin{flushleft}
+\faAtom\quad\textbf{RESEARCH EXPERIENCE}
+\end{flushleft}
+
+\begin{flushleft}
+\faSuitcase\quad\textbf{WORK EXPERIENCE}
+\end{flushleft}
+
+\begin{flushleft}
+\faUser\quad\textbf{AFFILIATIONS}
+\begin{itemize}
+    \item American Mathematical Society
+    \item Society of Industrial \& Applied Mathematics
+    \item Phi Theta Kappa
+\end{itemize}
+\end{flushleft}
+
+\begin{flushleft}
+\faTrophy\quad\textbf{ACHIEVEMENTS}
+\begin{itemize}
+    \item Dean’s List, Fall $2019\,-\,$CUNY York College
+    \item Dean’s List, Winter $2015$, Spring $2015$, Fall $2014\,-\,$CUNY BMCC
+    \item Inaugural Inter\,$-$\,University Math Olympiad Champion, University of Dhaka, July 2011
+\end{itemize}
+\end{flushleft}
 \end{document}
