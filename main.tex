@@ -8,6 +8,7 @@
 \usepackage{amsfonts, amsmath, amsthm, graphicx, lipsum}
 \usepackage{fontawesome5}
 \usepackage{academicons}
+\usepackage{paralist}
 
 \usepackage[backend=biber,bibstyle=ieee,dashed=false,sorting=ydnt,sortcites=true,natbib=true,defernumbers=true,maxbibnames=99,giveninits=true,uniquename=false]{biblatex}
 \bibliography{pub}
@@ -53,6 +54,8 @@
 % \defbibheading{bibliography}{\section*{}}
 % \bibliographystyle{ieeetr}
 
+\vspace*{-\baselineskip}
+
 \begin{flushleft}
 \large{\textbf{AWNON BHOWMIK}}
 \end{flushleft}
@@ -64,7 +67,7 @@
 % \quad\qquad Department of Mathematics, College of Sciences\\
 % \quad\qquad 4393 Andromeda Loop N, Orlando, FL 32816\\
 % \quad\qquad Room 418\\~\\
-\quad\faMapMarker*\quad Woodside, New York\\~\\
+\quad\faMapMarker*\quad Paterson, New Jersey\\~\\
 \quad\faPhone*\quad+1 929 462 8832\qquad\qquad\qquad\qquad\faGithub\quad\href{https://github.com/awnonbhowmik}{awnonbhowmik}\\
 \qquad\quad +1 917 524 6720\qquad\qquad\qquad\qquad\faLinkedin\quad\href{https://www.linkedin.com/in/awnon-bhowmik/}{awnon-bhowmik}\\~\\
 
@@ -98,19 +101,44 @@
     \centering
     \begin{tabular}{llll}
          \textbf{Degree} & \textbf{Institution} & \textbf{Concentration} & \textbf{Timeline}\\
-    Ph.D. & University of Central Florida & Mathematics & Jan $2022-$May $2022$\\
-    MS & The City College of New York & Mathematics & Mar $2020-$Dec $2021$\\
+    % Ph.D. & University of Central Florida & Mathematics & Jan $2022-$May $2022$\\
+    % MS & The City College of New York & Mathematics & Mar $2020-$Dec $2021$\\
+    MS & CSU Global Campus & Data Analytics & Sep 2023 - Present\\
     BS & CUNY York College & Major: Mathematics & Jan $2018-$Jan $2020$\\
     & & Minor: Computer Science &\\
-    BS & The City College of New York & Mathematics & Sep $2015-$May $2016$\\
+    % BS & The City College of New York & Mathematics & Sep $2015-$May $2016$\\
     AS & CUNY BMCC & Mathematics & Jan $2014-$Aug $2015$\\
-    B.Sc & University of Dhaka & Pure Mathematics & Jan $2009-$Dec $2012$
+    % B.Sc & University of Dhaka & Pure Mathematics & Jan $2009-$Dec $2012$
     \end{tabular}
     % \caption{Caption}
     % \label{tab:my_label}
 \end{table}
 \end{flushleft}
 
+\begin{flushleft}
+    \faChalkboard\qquad\textbf{TEST SCORES}
+    \begin{table}[h!]
+        \centering
+        \begin{tabular}{lll}
+           \textbf{Test}  &  \textbf{Taken}  &  \textbf{Score}\\
+            Assessment of Teaching Assistant Skills (ATAS 095) & Dec 2013 & 848\\
+            Content Specialty Test in Mathematics (CST 004) & Sep 2015 & 563\\
+            Content Specialty Test in Physics (CST 007) & Sep 2015 & 240\\
+            Content Specialty Test in Chemistry (CST 009) & Sep 2015 & 220\\
+            General GRE & Jan 2020 & VR: 141, QR: 155, AW: 3.0\\
+            Subject GRE (Mathematics) & Apr 2016 & 590
+        \end{tabular}
+        \label{tab:my_label}
+    \end{table}
+
+    \begin{flushleft}
+        \textbf{Online Coursework}\\
+        Udemy $-$ The Modern Python 3 Bootcamp\\
+        Instructor: Colt Steele
+    \end{flushleft}
+\end{flushleft}
+
+\newpage
 \begin{flushleft}
 \faBookOpen\quad\textbf{PUBLICATIONS}
 \nocite{*}
@@ -121,23 +149,24 @@
 \faAtom\quad\textbf{RESEARCH EXPERIENCE}
 \begin{flushleft}
 \textbf{Analysis of Searching \& Sorting Algorithms}\hfill Nov $2019 - $Dec $2019$
-\begin{itemize}
+\begin{compactitem}
     \item Using files with a varying number of inputs, applied linear and binary search. Analyzed the execution time for different inputs and proved algebraically and graphically $-$ the time complexity of those algorithms.
     \item Implemented various common sorting algorithms such as bubble sort, merge sort, etc. on
 files containing varying amounts of data. Analyzed the execution time for different inputs
 and proved algebraically and graphically $-$ the time complexity of those algorithms.
-\end{itemize}
+\end{compactitem}
 \textbf{Advisor: Dr. Louis D' Alotto}\\
 Department of Mathematics \& Computer Science, CUNY York College
 \end{flushleft}
 
+\newpage
 \begin{flushleft}
 \textbf{Battery Powered Car Problem}\hfill Sep $2019$
-\begin{itemize}
+\begin{compactitem}
     \item Given a pile of $n$ batteries assuming an ideal mileage of $k$ kilometers per battery, derived a recursive function that models the effective distance traveled by car since it can only carry one spare battery in it along with the other that powers its engine.
     \item Came up with two different algorithms and implemented using C++ code, to demonstrate
     the validity of the mathematical perspective. Illustrated with graphs to further support the claims.
-\end{itemize}
+\end{compactitem}
 \textbf{Advisor: Dr. Louis D' Alotto}\\
 Department of Mathematics \& Computer Science, CUNY York College
 \end{flushleft}
@@ -145,22 +174,22 @@ Department of Mathematics \& Computer Science, CUNY York College
 \begin{flushleft}
 \textbf{CSTEP Research Project}\hfill Sep $2014- $Aug $2015$\\
 \textbf{The Electrolytic Properties of Protein in the Cell Membrane Channel}
-\begin{itemize}
+\begin{compactitem}
     \item Studied the Gramicidin A ion channel of the bacillus Brevis bacteria cell, containing the major amino acid Tryptophan.
     \item Modeled and conjectured that the conformational change in the Tryptophan produces changes in the cell membrane, thus behaving like a capacitive dielectric thereby influencing the ion current.
     \item Applied classical physics to a biological problem to mathematically model the ion current under the influence of a variable membrane dielectric, as a function of amino acid conformation.
-\end{itemize}
+\end{compactitem}
 \textbf{Advisor: Dr. Brett A. Sims}\\
 Department of Mathematics, CUNY BMCC
 \end{flushleft}
 
-\newpage
+% \newpage
 \begin{flushleft}
 \textbf{Research Project: Safe Distance}\hfill Nov $2014 - $Dec $2014$
-\begin{itemize}
+\begin{compactitem}
     \item Modeled the relationship between the initial speed of two cars, the reaction time, and braking distance, relating to "average car lengths" as the unit of measure, essentially proving the "Two Second Rule" implemented by the New York City Department of Motor Vehicles (NY DMV).
     \item Used classical probability and graphs to determine that this rule may change during weathers that hinder visibility and that the distance between two cars must be greater in monsoon and winter than in summer $-$ before the brakes are applied to avoid a collision.
-\end{itemize}
+\end{compactitem}
 \textbf{Advisor: Dr. David Waldman}\\
 Department of Science, CUNY BMCC
 \end{flushleft}
@@ -169,43 +198,83 @@ Department of Science, CUNY BMCC
 \begin{flushleft}
 \faSuitcase\quad\textbf{WORK EXPERIENCE}
 \begin{flushleft}
+    \textbf{Computer Analyst/Programmer}\hfill Jan $2024 - $Present
+    \begin{compactitem}
+        \item Design, code, test, and debug software applications based on specified requirements.
+        \item Analyze user requirements and convert them into technical specifications for development.
+        \item Design and maintain databases, including data modeling and optimization.
+        \item Identify and resolve software defects or issues promptly.
+        \item Work closely with other team members, including analysts and project managers, to ensure successful project delivery.
+        \item Create and maintain documentation for code, processes, and procedures.
+        \item Conduct thorough testing of applications to ensure functionality and quality.
+        \item Adhere to security best practices and ensure that all software applications meet security standards.
+        \item Perform routine maintenance tasks and contribute to upgrading existing systems and applications.
+        \item Participate in code reviews to ensure code quality and adherence to coding standards.
+        \item Attain knowledge of the build and deployment workflow using Jenkins and Rancher.
+        \item Collaborate with relevant teams to integrate software applications with the Advanced Distribution Management System (ADMS), ensuring seamless communication and interoperability between the developed applications and the distribution management infrastructure. 
+        \item Stay updated on industry trends and emerging technologies and incorporate them into development practices when applicable.
+    \end{compactitem}
+    United States Postal Service (USPS)
+\end{flushleft}
+\begin{flushleft}
+\textbf{Computer Analyst/Programmer Associate}\hfill Jun $2023 - $Jan $2024$
+\begin{compactitem}
+    \item Design, develop, test, and maintain Java-based software applications, modules, and components to meet business requirements.
+    \item Collaborate with business analysts and end-users to gather and document software requirements.
+    \item Analyze and translate requirements into technical designs, ensuring adherence to USPS coding standards and best practices.
+    \item Write clean, efficient, and maintainable code following object-oriented principles and design patterns.
+    \item Perform unit testing and debugging to ensure software functionality, reliability, and performance.
+    \item Collaborate with team members to identify and resolve software defects, issues, and risks.
+    \item Participate in code reviews and provide constructive feedback to improve code quality and maintainability.
+    \item Stay up-to-date with industry trends and technologies related to Java development and apply them to enhance software solutions.
+    \item Assist in preparing technical documentation, user manuals, and system documentation.
+    \item Collaborate with other IT teams, including database administrators and system administrators, to ensure seamless integration and deployment of software applications.
+    \item Provide newcomers with onboarding documentation, assist with environment setup, and provide a preliminary explanation of the project.
+\end{compactitem}
+    United States Postal Service (USPS)
+\end{flushleft}
+
+\begin{flushleft}
 \textbf{Substitute Teacher}\hfill Oct $2020 - $Present
-\begin{itemize}
+\begin{compactitem}
     \item Perform instructional and classroom management processes for teachers for one or more days.
     \item Adhere to the curriculum and lesson plans assigned by the regular teacher.
     \item Oversee students outside of the classroom including in the hallways and cafeteria.
     \item Take attendance and document daily notes.
-\end{itemize}
+\end{compactitem}
 NYC Department of Education
 \end{flushleft}
 
+% \newpage
 \begin{flushleft}
 \textbf{Guest Teacher $-$ Mathematics \& Life Science}\hfill Sep $2022$
-\begin{itemize}
+\begin{compactitem}
     \item Taught 7th-grade algebra and Life Science and 8th-grade algebra.
     \item Take attendance and document daily notes.
-    \item Assign and scrutinize homework and assignments, conduct exams and tests.
+    \item Assign and scrutinize homework and assignments, and conduct exams and tests.
     \item Provide constructive feedback on students' performances to boost their morale.
-\end{itemize}
+\end{compactitem}
 Garden School
 \end{flushleft}
 
+\newpage
 \begin{flushleft}
 \textbf{Graduate Teaching Grader}\hfill Jan $2022 - $May $2022$
-\begin{itemize}
+\begin{compactitem}
     \item Assisting a faculty member in the non-instructional aspects of course teaching.
     \item Provides assistance to the students as required by the instructor.
     \item Running Office Hours in Zoom.
     \item Grading Quiz Papers and Test Papers.
     \item Providing feedback to the students.
     \item Inputting grades into WebcoursesUCF after grading and answering queries from students.
-\end{itemize}
+\end{compactitem}
 Department of Mathematics, University of Central Florida
 \end{flushleft}
 
+% \newpage
 \begin{flushleft}
 \textbf{Graduate Teaching Assistant}\hfill Jan $2022 - $May $2022$
-\begin{itemize}
+\begin{compactitem}
     \item Assists students in setting up their accounts with online mathematics platforms such as ALEKS, WebAssign, etc.
     \item Provides assistance to the students as required by the instructor
     \item Provides students with reading and writing material such as pen and paper if requested
@@ -214,158 +283,171 @@ Department of Mathematics, University of Central Florida
     \item Suggests a variety of resources such as videos, books, and other materials
     \item Performs proctoring duties during exam or testing hours if needed
     \item Adheres to the policies set by the mathematics lab and enforce the students to follow suit
-\end{itemize}
+\end{compactitem}
 Mathematics Assistance \& Learning Lab (MALL), University of Central Florida
 \end{flushleft}
 
 \begin{flushleft}
 \textbf{Mathematics Tutor $-$ ASAP Program}\hfill Jan $2020 - $May $2020$
-\begin{itemize}
+\begin{compactitem}
     \item Tutored around $30$ college students each semester in subjects of Algebra, Quantitative Reasoning, Calculus, Differential Equations, and Physics to help them understand concepts and solve problems.
     \item Served as a liaison between professors and students and provided the students with updates regarding their progress and areas of challenge.
-\end{itemize}
+\end{compactitem}
 Department of Mathematics, CUNY BMCC
 \end{flushleft}
 
+% \newpage
 \begin{flushleft}
 \textbf{College Assistant $-$ Computer Lab}\hfill Sep $2019 -$Mar $2020$
-\begin{itemize}
+\begin{compactitem}
     \item Patched software and installed new versions to eliminate security problems and protect data.
     \item Removed and replaced malfunctioning components to correct hardware problems.
     \item Supported all computer lab operations.
     \item Handled lab equipment, and cleaned keyboards, monitors, and disk drives.
     \item Explained technical information clearly to non-technical individuals to promote better understanding.
-\end{itemize}
+\end{compactitem}
 Department of Mathematics \& Computer Science, CUNY York College
 \end{flushleft}
 
-\newpage
+% \newpage
 \begin{flushleft}
 \textbf{Adjunct College Lab Technician}\hfill Sep $2017 - $Aug $2019$
-\begin{itemize}
+\begin{compactitem}
     \item Teach Calculus I in accordance with the professor’s syllabus. Assist students with setting up learning exercises using the software Maple and other laboratory materials. Provide an extensive visual understanding of the theory taught in class.
     \item Use current technology to enhance educational eﬀectiveness, including Maple and other online resources such as Desmos. Evaluate student’s progress in attaining educational goals and objectives.
     \item Frequently meet in person or communicate via email with the course instructor to discuss students’ instructional programs.
     \item Track student assignments, attendance, and test scores and enter them into an online database to provide real-time progress monitoring.
-\end{itemize}
+\end{compactitem}
 Department of Mathematics, CUNY BMCC
 \end{flushleft}
 
+% \newpage
 \begin{flushleft}
 \textbf{Lead Supplemental Instructor}\hfill Jan $2017 - $Aug $2019$
-\begin{itemize}
+\begin{compactitem}
     \item Attended all classes for the assigned class and took notes in preparation for upcoming supplemental instructor sessions.
     \item Facilitated student learning and helped students better understand concepts or applications of course content.
     \item Frequently meet in person or communicate via email with the course instructor to discuss students’ instructional programs.
     \item Supported students and assisted them in gaining effective study skills by utilizing diverse learning strategies and maximizing their potential for academic success.
     \item Provided bi-weekly small group sessions covering the course content.
     \item Prepared structured SI sessions to review and reinforce difficult material introduced in class. In addition to group study and discussion, sometimes it included administering practice quizzes or teaching organizational and study practices to enhance the mastery of the coursework and subject matter.
-\end{itemize}
+\end{compactitem}
 Department of Mathematics, CUNY BMCC
 \end{flushleft}
 
+% \newpage
 \begin{flushleft}
 \textbf{Mathematics \& Physics Tutor}\hfill Dec $2015 - $Jan $2018$
-\begin{itemize}
+\begin{compactitem}
     \item Tutored students ranging from 5th grade to undergraduate level on various mathematics and science courses.
     \item Reviewed classroom or curricula topics and assignments.
     \item Assisted students with homework, projects, test preparation, papers, research, and other academic tasks.
     \item Worked with students to help them understand key concepts, especially those learned in the classroom.
-\end{itemize}
+\end{compactitem}
 Varsity Tutors
 \end{flushleft}
 
-\newpage
+% \newpage
 \begin{flushleft}
 \textbf{BMCC Immersion Project (Summer Program)}\hfill Jun $2014 - $Jun $2015$
-\begin{itemize}
+\begin{compactitem}
     \item Conducted classes of $10 - 20$ students and instructed them on various courses such as
-    \begin{itemize}
+    \begin{compactitem}
         \item Basic Arithmetic and Algebra (MAT $012$)
         \item Mathematics Literacy (MAT $041$)
         \item Elementary Algebra (MAT $051$)
-    \end{itemize}
+    \end{compactitem}
     
-    \item The program allowed students to redo the material of a course they didn’t pass so that
-they can complete the course. The Immersion workshops also provide incoming students
-with an opportunity to enroll in one course to reduce or eliminate the number of basic
-skills courses they would be required to take in the fall and or spring semesters.
-    \item The program also gave continuing students who were close to passing a ‘basic skills’
-course an opportunity to work with a tutor in a small group or one-on-one setting. Upon
-completion of the tutorial program, students can test to satisfy their basic skills
-requirement before the fall or spring semester.
-\end{itemize}
+    \item The program allowed students to redo the material of a course they didn’t pass so that they could complete the course. The Immersion workshops also provide incoming students with an opportunity to enroll in one course to reduce or eliminate the number of basic skills courses they would be required to take in the fall and or spring semesters.
+    \item The program also gave continuing students who were close to passing basic skills course an opportunity to work with a tutor in a small group or one-on-one setting. Upon completion of the tutorial program, students can test to satisfy their basic skills requirement before the fall or spring semester.
+\end{compactitem}
 Department of Mathematics, CUNY BMCC
-\end{flushleft}
-
-\begin{flushleft}
-\textbf{Mathematics Tutor $-$ Math Lab}\hfill Mar $2014 - $Aug $2015$
-\begin{itemize}
-    \item Tutored around $30$ college students each semester in subjects of Algebra, Quantitative Reasoning, Calculus, Differential Equations, and Physics to help them understand concepts and solve problems.
-    \item Served as a liaison between professors and students and provided the students with updates regarding their progress and areas of challenge.
-\end{itemize}
-Department of Mathematics, CUNY BMCC
-\end{flushleft}
 \end{flushleft}
 
 \newpage
 \begin{flushleft}
+\textbf{Mathematics Tutor $-$ Math Lab}\hfill Mar $2014 - $Aug $2015$
+\begin{compactitem}
+    \item Tutored around $30$ college students each semester in subjects of Algebra, Quantitative Reasoning, Calculus, Differential Equations, and Physics to help them understand concepts and solve problems.
+    \item Served as a liaison between professors and students and provided the students with updates regarding their progress and areas of challenge.
+\end{compactitem}
+Department of Mathematics, CUNY BMCC
+\end{flushleft}
+\end{flushleft}
+
+% \newpage
+\begin{flushleft}
 \faUser\quad\textbf{AFFILIATIONS}
-\begin{itemize}
+\begin{compactitem}
     \item American Mathematical Society
     \item Society of Industrial \& Applied Mathematics
     \item Phi Theta Kappa
-\end{itemize}
+\end{compactitem}
 \end{flushleft}
 
 \begin{flushleft}
 \faTrophy\quad\textbf{ACHIEVEMENTS}
-\begin{itemize}
+\begin{compactitem}
     \item Dean’s List, Fall $2019\,-\,$CUNY York College
     \item Dean’s List, Winter $2015$, Spring $2015$, Fall $2014\,-\,$CUNY BMCC
-\end{itemize}
+\end{compactitem}
 \end{flushleft}
 
+% \newpage
 \begin{flushleft}
 \faAward\quad\textbf{HONORS \& AWARDS}
-\begin{itemize}
+\begin{compactitem}
     \item Ernesto Malave Merit Scholarship, University Student Senate (USS) of CUNY
     \item Guttman Transfer Scholarship, Stella and Charles Guttman Foundation
     \item Inaugural Inter\,$-$\,University Math Olympiad Champion, University of Dhaka, July $2011$
-\end{itemize}
+\end{compactitem}
 \end{flushleft}
 
+% \newpage
 \begin{flushleft}
 \faTasks\quad\textbf{BROADER IMPACTS}\\
 Mathematics Stack Exchange
-\begin{itemize}
+\begin{compactitem}
     \item Contributed $50+$ answers to the community.
     \item Used this platform to learn about numerous books and problem-solving techniques.
-\end{itemize}
+\end{compactitem}
 
 Quora
-\begin{itemize}
+\begin{compactitem}
     \item Contributed to about 3500 answers related to mathematics and computer science.
     \item Dubbed the Top Writer in Calculus, Integration, and many other topics, numerous times.
     \item Answers became part of Quora Digest, multiple times.
     \item Impacted people all around the world, garnering a combined leadership of $4000$ followers.
     \item Praised by experts in mathematics.
-\end{itemize}
+\end{compactitem}
 \end{flushleft}
 
+\newpage
 \begin{flushleft}
 \faCogs\quad\textbf{TECHNICAL SKILLS}
 \begin{table}[h!]
     \centering
     \begin{tabular}{ll}
-        Programming Languages & C, C++, Python, FORTRAN, SQL, MASM x86\\
-        Web Development & HTML5, CSS3, JavaScript\\
-        Web Frameworks & Bootstrap, Tailwind CSS, ReactJS\\
-        Mathematical Packages & Mathematica, Maple, MATLAB\\
-        Typesetting Software & \LaTeX\\
-        Image Processing Software & Adobe Photoshop, GIMP, Inkscape\\
-        3D Modeling and Animation Package & Autodesk 3ds Max\\
-        GUI Framework & Qt C++, Tkinter
+        \textbf{Programming}        & Java, JavaScript, Python, C++, C, SQL, FORTRAN, \\&MASM x86 \\\hline
+    \textbf{Frameworks}                   & Spring Framework (Spring Boot, Spring MVC, \\&Spring Data JPA), Hibernate, Tkinter, Bootstrap,\\&Tailwind CSS, ReactJS, NextJS, AngularJS \\\hline
+    \textbf{Java Technologies}            & Spring, Hibernate, Java Beans \\\hline
+    \textbf{Design Patterns}              & MVC, DAO, Singleton, Factory \\\hline
+    \textbf{Web Development}              & HTML5, CSS3, SCSS, Bootstrap, Tailwind CSS,\\& ReactJS, NextJS, JavaScript \\\hline
+    \textbf{Database}                     & MySQL, SQLite, PostgreSQL, Oracle, SQL Developer \\\hline
+    \textbf{Operating Systems}            & Windows, Ubuntu, Kali \\\hline
+    \textbf{IDEs}                         & Eclipse, IntelliJ, VSCode \\\hline
+    \textbf{Defect Tracking}              & JIRA, VersionOne, Bugzilla \\\hline
+    \textbf{Version Control}              & GitHub, GitHub Desktop, Git Bash, Tortoise Git \\\hline
+    \textbf{Testing}                      & JUnit, Mockito, PyTest \\\hline
+    \textbf{Web Services}                 & REST, Postman \\\hline
+    \textbf{Servers}                      & Apache Tomcat, Apache Kafka \\\hline
+    \textbf{Build Script}                 & Apache Maven \\\hline
+    \textbf{Methodologies}                & Agile, Scrum, Test-Driven Development \\\hline
+    \textbf{Mathematical Packages}        & Mathematica, Maple, MATLAB \\\hline
+    \textbf{Typesetting Software}         & \LaTeX \\\hline
+    \textbf{Image Processing}    & Adobe Photoshop, GIMP, Inkscape \\\hline
+    \textbf{3D}   & Autodesk 3ds Max \\\hline
+    \textbf{GUI Framework}                & Qt C++, Tkinter
     \end{tabular}
     % \caption{Caption}
     % \label{tab:my_label}
