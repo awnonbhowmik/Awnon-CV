@@ -15,15 +15,15 @@ To compile the LaTeX source into a PDF, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/awnonbhowmik/awnon-cv.git
+   git clone https://github.com/awnonbhowmik/Awnon-CV.git
    ```
 2. Ensure you have an up-to-date LaTeX distribution installed (e.g., TeXLive or MikTeX).
 3. Compile the LaTeX file:
 ```bash
-pdflatex awnon-cv.tex
-bibtex awnon-cv.aux
-pdflatex awnon-cv.tex
-pdflatex awnon-cv.tex
+pdflatex main.tex
+biber main
+pdflatex main.tex
+pdflatex main.tex
 ```
 ## Reference Sites
 
