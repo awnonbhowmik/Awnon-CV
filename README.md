@@ -5,8 +5,8 @@ This repository contains my professionally crafted Curriculum Vitae (CV), writte
 ## Features
 
 - Clean, elegant layout designed for readability and impact.
-- Organized sections for education, experience, projects, and publications.
-- Incorporates **FontAwesome 5** for iconography.
+- Organized sections for education, research experience, work experience, publications, presentations, technical skills, and more.
+- Incorporates **FontAwesome 5** and **Academicons** for iconography.
 - Bibliography section managed via **BibLaTeX** for easy referencing.
 
 ## Getting Started
@@ -19,12 +19,16 @@ To compile the LaTeX source into a PDF, follow these steps:
    ```
 2. Ensure you have an up-to-date LaTeX distribution installed (e.g., TeXLive or MikTeX).
 3. Compile the LaTeX file:
-```bash
-pdflatex main.tex
-biber main
-pdflatex main.tex
-pdflatex main.tex
-```
+   ```bash
+   pdflatex main.tex
+   biber main
+   pdflatex main.tex
+   pdflatex main.tex
+   ```
+## CI/CD
+
+This repository includes a GitHub Actions workflow that automatically compiles the LaTeX source into a PDF on every push to `main`. The built PDF is uploaded as an artifact and published as a [GitHub Release](https://github.com/awnonbhowmik/Awnon-CV/releases/tag/latest).
+
 ## Reference Sites
 
 Such beauty could not have been achieved, even with my masterful abilities in LaTeX. Therefore, I must give credit where it’s due. This CV's professional look and feel were inspired by the following resources:
@@ -36,6 +40,6 @@ Such beauty could not have been achieved, even with my masterful abilities in La
 
 ## License
 
-© 2022 Awnon Bhowmik. All rights reserved.
+© 2025 Awnon Bhowmik. All rights reserved.
 
 No part of this project may be reproduced, distributed, or transmitted in any form or by any means without the prior written permission of the author.
