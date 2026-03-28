@@ -1,0 +1,352 @@
+\documentclass[a4paper, 11pt]{article}
+
+% ---------- Packages ----------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[top=0.80in, bottom=0.80in, left=1.00in, right=1.00in,
+            headheight=14pt]{geometry}
+\usepackage[shortlabels]{enumitem}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue,
+            citecolor=blue, pdftitle={Awnon Bhowmik -- Teaching CV}]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{fontawesome5}
+
+% ---------- Spacing ----------
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+% ---------- Section command ----------
+% Mirrors main.tex style: icon + bold uppercase title + thick rule below
+\newcommand{\cvsection}[2]{%
+  \vspace{14pt}%
+  \noindent#1\enspace{\large\bfseries\MakeUppercase{#2}}\\[-3pt]%
+  \rule{\linewidth}{1pt}%
+  \vspace{5pt}\par\noindent%
+}
+
+% ---------- List settings ----------
+\setlist[itemize]{
+  noitemsep,
+  topsep=2pt,
+  partopsep=0pt,
+  leftmargin=1.4em,
+  itemsep=1pt
+}
+\setlist[enumerate]{
+  leftmargin=*,
+  itemsep=5pt,
+  topsep=3pt,
+  partopsep=0pt
+}
+
+% ---------- Header / Footer ----------
+% Match main.tex: name right, title left, page center; rule on top
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\lhead{\itshape Teaching Curriculum Vitae}
+\rhead{Awnon Bhowmik}
+\chead{\thepage}
+\thispagestyle{empty}   % page 1 has the full name/contact block already
+
+% ---------- Helpers ----------
+\newcommand{\entryvspace}{\vspace{9pt}}
+\newcommand{\subvspace}{\vspace{6pt}}
+
+% ============================================================
+\begin{document}
+% ============================================================
+
+% ==================== NAME & CONTACT ====================
+\begin{flushleft}
+  {\Large\bfseries AWNON BHOWMIK}
+\end{flushleft}
+
+\begin{flushleft}
+\rule{\textwidth}{1pt}
+{\large\bfseries TEACHING CURRICULUM VITAE}\\[6pt]
+\faMapMarker*\enspace Paterson, New Jersey, USA\\[4pt]
+\faPhone*\enspace\href{tel:+19294628832}{+1\,(929)\,462-8832}
+\hfill
+\faLinkedin\enspace\href{https://www.linkedin.com/in/awnon-bhowmik}{awnon-bhowmik}\\[2pt]
+\faEnvelope\enspace\href{mailto:awnonbhowmik@outlook.com}{awnonbhowmik@outlook.com}
+\hfill
+\faOrcid\enspace\href{https://orcid.org/0000-0001-5858-5417}{0000-0001-5858-5417}\\[2pt]
+\faGlobe\enspace\href{https://awnon.netlify.app}{awnon.netlify.app}
+\hfill
+\faSearch\enspace\href{https://scholar.google.com/citations?user=nEdZAFkAAAAJ}{Google Scholar}\\[2pt]
+\rule{\textwidth}{1pt}
+\end{flushleft}
+
+% ==================== TEACHING PROFILE ====================
+\cvsection{\faUser}{Teaching Profile}
+
+Educator and doctoral researcher with over seven years of undergraduate-level mathematics
+instruction in the City University of New York (CUNY) system, including direct instruction,
+supplemental instruction, and technology-enhanced laboratory facilitation at Borough of
+Manhattan Community College (BMCC). Experienced across the full undergraduate mathematics
+curriculum, from developmental arithmetic and mathematical literacy through Calculus III,
+Differential Equations, and Discrete Mathematics, with particular strength in gateway and
+college-level courses serving diverse learner populations. Holds a Master of Science in Data
+Analytics (GPA\,4.0) and a Bachelor of Science in Mathematics, providing subject-matter depth
+for instruction in statistics, quantitative reasoning, and data analytics. Committed to
+accessible, student-centered instruction in fully online and hybrid academic environments.
+
+% ==================== TEACHING AREAS ====================
+\cvsection{\faChalkboard}{Teaching Areas}
+
+\begin{tabular}{@{}p{0.47\linewidth}@{\hspace{10pt}}p{0.47\linewidth}@{}}
+\textbf{Mathematics}                     & \textbf{Statistics \& Quantitative Reasoning}\\
+\quad Arithmetic through Calculus III    & \quad Introduction to Statistics\\
+\quad Differential Equations            & \quad Probability\\
+\quad Linear Algebra                    & \quad Quantitative Reasoning\\
+\quad Discrete Mathematics              & \quad Data-Driven Problem Solving\\[6pt]
+\textbf{Data Analytics \& Computing}     & \textbf{Developmental \& Foundational}\\
+\quad Foundations of Data Analytics     & \quad Mathematical Literacy\\
+\quad Data Mining and Visualization     & \quad Elementary and Intermediate Algebra\\
+\quad Predictive Analytics              & \quad Pre-Calculus\\
+\quad Business Intelligence             & \quad Bridge and Remedial Mathematics\\
+\end{tabular}
+
+% ==================== EDUCATION ====================
+\cvsection{\faGraduationCap}{Education}
+
+\begin{minipage}{\linewidth}
+\begin{tabularx}{\linewidth}{@{}lXr@{}}
+\toprule
+\textbf{Degree} & \textbf{Institution and Concentration} & \textbf{Timeline}\\
+\midrule
+\textbf{DCS} & Colorado Technical University                            &                  \\
+             & Cybersecurity \& Information Assurance                   & 2025--2029        \\[4pt]
+\textbf{MS}  & Colorado State University Global                        &                  \\
+             & Data Analytics \quad \textit{GPA: 4.0\,/\,4.0}         & 2023--2025        \\[4pt]
+\textbf{BS}  & York College, City University of New York (CUNY)        &                  \\
+             & Mathematics \quad \textit{Minor: Computer Science}      & 2018--2020        \\[4pt]
+\textbf{AS}  & Borough of Manhattan Community College (BMCC), CUNY     &                  \\
+             & Mathematics                                              & 2014--2015        \\
+\bottomrule
+\end{tabularx}
+\vspace{3pt}\\
+{\small\itshape MS coursework: Foundations of Data Analytics; Data Mining \& Visualization;
+Predictive Analytics; Business Intelligence; Data Warehousing; Business Analytics}
+\end{minipage}
+
+% ==================== TEACHING EXPERIENCE ====================
+\cvsection{\faChalkboardTeacher}{Teaching Experience}
+
+% ----- NYC DOE -----
+\noindent\textbf{Substitute Teacher --- Mathematics \& Science}%
+  \hfill\textbf{Sep 2020--May 2023}\\
+\textit{New York City Department of Education}\hfill\textit{New York, NY}
+\begin{itemize}
+  \item Delivered mathematics and science instruction for grades 7--8 across multiple
+        NYC public school assignments
+  \item Followed assigned curricula, administered assessments, and maintained
+        classroom discipline and attendance records
+  \item Supervised students during non-instructional periods
+\end{itemize}
+
+\entryvspace
+
+% ----- Garden School -----
+\noindent\textbf{Guest Teacher --- Mathematics \& Life Science}%
+  \hfill\textbf{Sep 2022}\\
+\textit{The Garden School}\hfill\textit{Queens, NY}
+\begin{itemize}
+  \item Taught 7th- and 8th-grade Algebra and Life Science
+  \item Prepared lesson materials, assignments, and assessments; evaluated student
+        performance and provided feedback
+\end{itemize}
+
+\entryvspace
+
+% ----- UCF GTA -----
+\noindent\textbf{Graduate Teaching Assistant / Grader}%
+  \hfill\textbf{Jan 2022--May 2022}\\
+\textit{Department of Mathematics, University of Central Florida}%
+  \hfill\textit{Orlando, FL (Remote)}
+\begin{itemize}
+  \item Supported undergraduate mathematics instruction through the ALEKS and
+        WebAssign platforms
+  \item Graded examinations and assignments; maintained the WebcoursesUCF gradebook
+  \item Held virtual office hours via Zoom; assisted students during open-lab and
+        supplementary instruction sessions
+\end{itemize}
+
+\entryvspace
+
+% ----- BMCC Instructor (PRIMARY ENTRY) -----
+\noindent\textbf{Mathematics Instructor / College Assistant / Tutor}%
+  \hfill\textbf{Mar 2014--Aug 2021}\\
+\textit{Department of Mathematics, Borough of Manhattan Community College (CUNY)}%
+  \hfill\textit{New York, NY}
+\begin{itemize}
+  \item Provided direct instruction and academic support across the Math Lab, ASAP,
+        and Summer Immersion programs, routinely serving 30 or more students per term
+  \item Taught and tutored the full undergraduate mathematics sequence: Arithmetic,
+        Mathematical Literacy, Elementary Algebra, Intermediate Algebra, Pre-Calculus,
+        Quantitative Reasoning, Introduction to Statistics, Discrete Mathematics,
+        Calculus I--III, and Differential Equations
+  \item Designed structured study modules, practice quizzes, and visual and applied
+        problem-solving resources tailored to developmental and gateway course students
+  \item Conducted workshops and supplemental instruction sessions independently and
+        in coordination with course faculty
+  \item Delivered one-on-one tutoring and small-group instruction; adapted
+        instructional strategies to meet diverse student needs across skill levels
+  \item Assisted faculty with grading, progress tracking, attendance monitoring, and
+        academic feedback across multiple course sections
+  \item Provided academic support in Physics within cross-disciplinary student
+        support programs
+\end{itemize}
+
+\entryvspace
+
+% ----- BMCC Lab Tech -----
+\noindent\textbf{Adjunct College Lab Technician --- Calculus Laboratory}%
+  \hfill\textbf{Sep 2017--Sep 2019}\\
+\textit{Department of Mathematics, Borough of Manhattan Community College (CUNY)}%
+  \hfill\textit{New York, NY}
+\begin{itemize}
+  \item Facilitated weekly Calculus I laboratory sessions using Maple, Desmos, and
+        mathematical visualization tools
+  \item Recorded student attendance and assessment data; coordinated with course
+        instructors on a weekly basis
+\end{itemize}
+
+\entryvspace
+
+% ----- Varsity Tutors -----
+\begin{minipage}{\linewidth}
+\noindent\textbf{Mathematics \& Physics Tutor}%
+  \hfill\textbf{Dec 2015--Jan 2018}\\
+\textit{Varsity Tutors}\hfill\textit{Remote / New York, NY}
+\begin{itemize}
+  \item Provided individualized instruction in mathematics and physics to students
+        ranging from middle school through the undergraduate level
+  \item Reinforced course concepts, problem-solving methods, and examination
+        preparation across diverse subject areas
+  \item Strengthened student conceptual understanding and quantitative reasoning
+        skills through adapted, student-centered sessions
+\end{itemize}
+\end{minipage}
+
+% ==================== COURSES TAUGHT OR SUPPORTED ====================
+\cvsection{\faBookOpen}{Courses Taught or Supported}
+
+\noindent\textbf{Developmental \& Foundational Mathematics}\\[4pt]
+\begin{tabular}{@{}p{0.15\linewidth}p{0.80\linewidth}@{}}
+MAT\,008 & Basic Mathematics\\
+MAT\,012 & Basic Arithmetic and Algebra\\
+MAT\,014 & Mathematical Literacy with Computational Support\\
+MAT\,041 & Mathematical Literacy\\
+MAT\,051 & Fundamentals of Trigonometry\\
+MAT\,056 & Intermediate Algebra and Elementary Trigonometry\\
+\end{tabular}
+
+\subvspace
+
+\noindent\textbf{Core College-Level Mathematics}\\[4pt]
+\begin{tabular}{@{}p{0.15\linewidth}p{0.80\linewidth}@{}}
+MAT\,150 & Introduction to Statistics\\
+MAT\,200 & Discrete Mathematics\\
+MAT\,206 & Precalculus\\
+\end{tabular}
+
+\subvspace
+
+\noindent\textbf{Advanced Mathematics}\\[4pt]
+\begin{tabular}{@{}p{0.15\linewidth}p{0.80\linewidth}@{}}
+MAT\,301 & Calculus I\\
+MAT\,302 & Calculus II\\
+MAT\,303 & Calculus III\\
+MAT\,501 & Differential Equations\\
+\end{tabular}
+
+% ==================== ONLINE INSTRUCTION & TECHNOLOGIES ====================
+\cvsection{\faLaptop}{Online Instruction \& Instructional Technologies}
+
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+\textbf{LMS Platforms}      & Canvas, Blackboard, WebcoursesUCF\\[3pt]
+\textbf{Assessment}         & ALEKS, WebAssign\\[3pt]
+\textbf{Synchronous}        & Zoom (virtual office hours, supplemental sessions)\\[3pt]
+\textbf{Math Software}      & Maple, Desmos, MATLAB, Mathematica\\[3pt]
+\textbf{Data \& Analytics}  & Python (pandas, NumPy, scikit-learn, TensorFlow), Tableau, SQL\\[3pt]
+\textbf{Programming}        & Python, Java\\
+\end{tabularx}
+
+% ==================== PROFESSIONAL EXPERIENCE ====================
+\cvsection{\faSuitcase}{Professional Experience}
+
+\noindent\textbf{Computer Systems Analyst / Programmer}%
+  \hfill\textbf{2024--Present}\\
+\textit{United States Postal Service (USPS)}\hfill\textit{Remote / St.\ Louis, MO}
+\begin{itemize}
+  \item Develop and maintain enterprise-scale Java applications supporting national
+        logistics operations; ensure compliance with USPS security and coding standards
+  \item Manage relational databases and automate ETL workflows using Python
+  \item Deploy microservices via Jenkins, Rancher, and Kubernetes using CI/CD practices
+\end{itemize}
+
+\entryvspace
+
+\begin{minipage}{\linewidth}
+\noindent\textbf{Computer Systems Analyst / Programmer Associate}%
+  \hfill\textbf{2023--2024}\\
+\textit{United States Postal Service (USPS)}\hfill\textit{Remote / San Mateo, CA}
+\begin{itemize}
+  \item Designed and developed Java-based applications and RESTful APIs using
+        Spring Boot and PostgreSQL
+  \item Wrote SQL scripts for schema management and data analysis; conducted unit
+        testing, debugging, and code reviews
+\end{itemize}
+\end{minipage}
+
+% ==================== SELECTED PUBLICATIONS ====================
+\cvsection{\faAtom}{Selected Publications}
+
+\begin{enumerate}[label={[\arabic*]}, itemsep=6pt, topsep=3pt]
+
+\item Bhowmik, A.\,K., Hasan, M., Saha, M., \& Saha, G. (2025). Trends, challenges,
+  and socioeconomic impacts of HIV in Bangladesh: A data-driven analysis (2000--2024).
+  \textit{Sexes}, \textit{6}(3), 34.\\
+  \href{https://doi.org/10.3390/sexes6030034}{https://doi.org/10.3390/sexes6030034}
+
+\item Bhowmik, A.\,K., Hasan, M., Redoy, M., M., H., \& Saha, G. (2024). Nipah virus
+  outbreak trends in Bangladesh during 2001--2024: A brief review.
+  \textit{Science in One Health}, \textit{4}, 100103.\\
+  \href{https://doi.org/10.1016/j.soh.2024.100103}{https://doi.org/10.1016/j.soh.2024.100103}
+
+\item Bhowmik, A.\,K. (2024). Raising digital security awareness in the fintech sector:
+  Case studies and defense mechanisms.
+  \textit{International Journal of Mathematical Sciences and Computing},
+  \textit{10}(3), 26--36.\\
+  \href{https://doi.org/10.5815/ijmsc.2024.03.03}{https://doi.org/10.5815/ijmsc.2024.03.03}
+
+\item Bhowmik, A.\,K. (2024). An unorthodox trapdoor function.
+  \textit{International Journal of Mathematical Sciences and Computing},
+  \textit{10}(1), 31--38.\\
+  \href{https://doi.org/10.5815/ijmsc.2024.01.04}{https://doi.org/10.5815/ijmsc.2024.01.04}
+
+\item Bhowmik, A.\,K., \& Menon, U. (2021). An adaptive cryptosystem on a finite field.
+  \textit{PeerJ Computer Science}, \textit{7}, e637.\\
+  \href{https://doi.org/10.7717/peerj-cs.637}{https://doi.org/10.7717/peerj-cs.637}
+
+\end{enumerate}
+
+% ==================== RESEARCH INTERESTS ====================
+\cvsection{\faLightbulb}{Research Interests}
+
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+\textbf{Security \& Privacy}  & Cybersecurity, Differential Privacy, Cryptography,
+                                Threat Modeling, Privacy-Preserving Machine Learning\\[5pt]
+\textbf{Data \& Analytics}    & Data Analytics, Predictive Modeling, Statistical Inference,
+                                Anomaly Detection\\[5pt]
+\textbf{Mathematics}          & Computational Mathematics, Number Theory, Mathematical Modeling\\
+\end{tabularx}
+
+\end{document}

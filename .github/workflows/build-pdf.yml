@@ -1,4 +1,4 @@
-name: Build LaTeX PDF
+name: Build LaTeX PDFs
 
 on:
   push:
@@ -17,27 +17,54 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Compile LaTeX to PDF
+      - name: Build General CV
         uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
-          latexmk_use_xelatex: false
-          extra_system_packages: "py-pygments"
-          args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode
+          working_directory: "general CV"
+          latexmk_use_xelatex: true
+          args: -file-line-error -halt-on-error -interaction=nonstopmode -outdir=out
 
-      - name: Upload PDF as artifact
+      - name: Build Teaching CV
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: teaching_cv.tex
+          working_directory: "Academic CV"
+          latexmk_use_xelatex: false
+          args: -file-line-error -halt-on-error -interaction=nonstopmode -outdir=out
+
+      - name: Rename PDFs for release
+        run: |
+          cp "general CV/out/main.pdf" "Awnon-Bhowmik-General-CV.pdf"
+          cp "Academic CV/out/teaching_cv.pdf" "Awnon-Bhowmik-Teaching-CV.pdf"
+
+      - name: Upload General CV artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Awnon-CV
-          path: main.pdf
+          name: General-CV
+          path: Awnon-Bhowmik-General-CV.pdf
           retention-days: 30
 
-      - name: Release PDF
+      - name: Upload Teaching CV artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Teaching-CV
+          path: Awnon-Bhowmik-Teaching-CV.pdf
+          retention-days: 30
+
+      - name: Release PDFs
         uses: softprops/action-gh-release@v2
-        if: startsWith(github.ref, 'refs/heads/main')
         with:
           tag_name: latest
           name: Latest CV Build
-          files: main.pdf
-          body: "Automated PDF build from the latest commit on main."
+          files: |
+            Awnon-Bhowmik-General-CV.pdf
+            Awnon-Bhowmik-Teaching-CV.pdf
+          body: |
+            Automated PDF build from the latest commit on `main`.
+
+            | File | Description |
+            |------|-------------|
+            | `Awnon-Bhowmik-General-CV.pdf` | General CV (`general CV/main.tex`) |
+            | `Awnon-Bhowmik-Teaching-CV.pdf` | Teaching CV (`Academic CV/teaching_cv.tex`) |
           make_latest: true

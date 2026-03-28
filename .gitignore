@@ -1,3 +1,9 @@
+# Claude Code memory files
+.claude/
+
+# LaTeX build output directories
+out/
+
 # LaTeX build artifacts
 *.aux
 *.bbl
@@ -9,5 +15,13 @@
 *.out
 *.run.xml
 *.synctex.gz
+*.xdv
 *.pdf
 *.bcf-SAVE-ERROR
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo

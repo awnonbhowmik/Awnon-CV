@@ -1,0 +1,445 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ headheight=40pt]{geometry}
+\usepackage{fontspec}
+\usepackage{amsfonts, amsmath, amsthm, graphicx}
+\usepackage{fontawesome5}
+\usepackage{academicons}
+\usepackage{paralist}
+\usepackage{tabularx}
+\usepackage{booktabs}
+
+\usepackage[backend=biber,bibstyle=ieee,dashed=false,sorting=ydnt,sortcites=true,
+  natbib=true,defernumbers=true,maxbibnames=99,giveninits=true,
+  uniquename=false]{biblatex}
+
+\addbibresource{pub.bib}
+\addbibresource{present.bib}
+
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    pdftitle={Awnon CV}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Curriculum Vitae}
+\rhead{Awnon Bhowmik}
+\chead{\thepage}
+\thispagestyle{empty}
+
+\renewcommand*{\mkbibnamegiven}[1]{
+\ifitemannotation{highlight}{\textbf{#1}}{#1}}
+\renewcommand*{\mkbibnamefamily}[1]{
+\ifitemannotation{highlight}{\textbf{#1}}{#1}%
+\ifitemannotation{first}{\textsuperscript{*}}{}%
+\ifitemannotation{corresponding}{$^\dagger$}{}}
+
+\raggedbottom
+
+\begin{document}
+
+\vspace*{-\baselineskip}
+
+% ==================== CONTACT ====================
+\begin{flushleft}
+\large{\textbf{AWNON BHOWMIK}}
+\end{flushleft}
+
+\rule{\textwidth}{1pt}\\[4pt]
+\textbf{CONTACT INFORMATION}\\[4pt]
+\begin{tabularx}{\textwidth}{@{}X >{\raggedleft\arraybackslash}X@{}}
+\faMapMarker*\enspace Paterson, New Jersey & \\[3pt]
+\faPhone*\enspace +1 929 462 8832          & \faGithub\enspace\href{https://github.com/awnonbhowmik}{awnonbhowmik}\\[3pt]
+\faPhone*\enspace +1 917 524 6720          & \faLinkedin\enspace\href{https://www.linkedin.com/in/awnon-bhowmik/}{awnon-bhowmik}\\[3pt]
+\faEnvelope\enspace\href{mailto:awnonbhowmik@outlook.com}{awnonbhowmik@outlook.com}
+                                           & \aiGoogleScholarSquare\enspace\href{https://scholar.google.com/citations?user=nEdZAFkAAAAJ\&hl=en}{Google Scholar}\\[3pt]
+\faGlobe\enspace\href{https://awnon.netlify.app/}{awnon.netlify.app}
+                                           & \faOrcid\enspace\href{https://orcid.org/0000-0001-5858-5417}{0000-0001-5858-5417}\\
+\end{tabularx}\\[2pt]
+\rule{\textwidth}{1pt}
+
+% ==================== RESEARCH INTERESTS ====================
+\begin{flushleft}
+\faLightbulb\quad\textbf{RESEARCH INTERESTS}\\[4pt]
+\begin{tabular}{ll}
+  \textbf{Security}     & Information Security, Differential Privacy, Cryptography, Data Analytics \\
+  \textbf{Mathematics}  & Computational Mathematics, Mathematical Modeling, Number Theory
+\end{tabular}
+\end{flushleft}
+
+% ==================== EDUCATION ====================
+\begin{flushleft}
+\faGraduationCap\quad\textbf{EDUCATION}\\[6pt]
+\begin{tabularx}{\textwidth}{@{}lXr@{}}
+\toprule
+\textbf{Degree} & \textbf{Institution and Concentration} & \textbf{Timeline} \\
+\midrule
+\textbf{DCS} & Colorado Technical University &\\
+             & Cybersecurity \& Information Assurance & Mar 2025 – Nov 2029 \\[4pt]
+\textbf{MS}  & Colorado State University Global &\\
+             & Data Analytics & Aug 2023 – Mar 2025 \\[4pt]
+\textbf{BS}  & York College, City University of New York (CUNY) &\\
+             & Mathematics with Minor in Computer Science & Jan 2018 – Jan 2020 \\[4pt]
+\textbf{AS}  & Borough of Manhattan Community College (BMCC), CUNY &\\
+             & Mathematics & Jan 2014 – Aug 2015 \\
+\bottomrule
+\end{tabularx}
+\end{flushleft}
+
+% ==================== TEST SCORES ====================
+\begin{flushleft}
+\faChalkboard\quad\textbf{TEST SCORES}\\[6pt]
+\begin{tabularx}{\textwidth}{@{}Xll@{}}
+\toprule
+\textbf{Test} & \textbf{Taken} & \textbf{Score}\\
+\midrule
+Assessment of Teaching Assistant Skills (ATAS 095) & Dec 2013 & 848\\
+Content Specialty Test in Mathematics (CST 004)    & Sep 2015 & 563\\
+Content Specialty Test in Physics (CST 007)        & Sep 2015 & 240\\
+Content Specialty Test in Chemistry (CST 009)      & Sep 2015 & 220\\
+General GRE                                        & Jan 2020 & VR: 141, QR: 155, AW: 3.0\\
+Subject GRE (Mathematics)                          & Apr 2016 & 590\\
+\bottomrule
+\end{tabularx}\\[6pt]
+\textbf{Online Coursework:} Udemy --- The Modern Python 3 Bootcamp
+  \quad\textit{(Instructor: Colt Steele)}
+\end{flushleft}
+
+\newpage
+
+% ==================== PUBLICATIONS ====================
+\begin{flushleft}
+\faBookOpen\quad\textbf{PUBLICATIONS}
+\nocite{*}
+\printbibliography[heading=none, type=article]
+\end{flushleft}
+
+% ==================== PRESENTATIONS ====================
+\begin{flushleft}
+\faChalkboardTeacher\quad\textbf{PRESENTATIONS}
+\printbibliography[heading=none, type=misc, resetnumbers=true]
+\end{flushleft}
+
+% ==================== RESEARCH EXPERIENCE ====================
+\begin{flushleft}
+\faAtom\quad\textbf{RESEARCH EXPERIENCE}\\[4pt]
+
+\noindent\begin{minipage}{\linewidth}
+\textbf{Analysis of Searching \& Sorting Algorithms}\hfill Nov 2019 -- Dec 2019
+\begin{compactitem}
+    \item Applied linear and binary search on files with varying inputs; analyzed and proved
+          the time complexity of those algorithms algebraically and graphically.
+    \item Implemented common sorting algorithms (bubble sort, merge sort, etc.) on files
+          of varying sizes; analyzed time complexity algebraically and graphically.
+\end{compactitem}
+\textbf{Advisor: Dr. Louis D'Alotto}\\
+Department of Mathematics \& Computer Science, CUNY York College
+\end{minipage}
+
+\vspace{8pt}
+
+\noindent\begin{minipage}{\linewidth}
+\textbf{Battery Powered Car Problem}\hfill Sep 2019
+\begin{compactitem}
+    \item Derived a recursive function modeling the effective distance traveled by a car
+          carrying one spare battery; implemented two algorithms in C++ to validate the model.
+    \item Illustrated findings graphically to support the mathematical perspective.
+\end{compactitem}
+\textbf{Advisor: Dr. Louis D'Alotto}\\
+Department of Mathematics \& Computer Science, CUNY York College
+\end{minipage}
+
+\vspace{8pt}
+
+\noindent\begin{minipage}{\linewidth}
+\textbf{CSTEP Research Project}\hfill Sep 2014 -- Aug 2015\\
+\textbf{The Electrolytic Properties of Protein in the Cell Membrane Channel}
+\begin{compactitem}
+    \item Studied the Gramicidin A ion channel of the \textit{Bacillus brevis} cell,
+          focusing on the amino acid Tryptophan.
+    \item Conjectured that conformational changes in Tryptophan alter membrane behavior,
+          acting as a capacitive dielectric influencing ion current.
+    \item Applied classical physics to mathematically model ion current as a function
+          of variable membrane dielectric and amino acid conformation.
+\end{compactitem}
+\textbf{Advisor: Dr. Brett A. Sims}\\
+Department of Mathematics, CUNY BMCC
+\end{minipage}
+
+\vspace{8pt}
+
+\noindent\begin{minipage}{\linewidth}
+\textbf{Research Project: Safe Distance}\hfill Nov 2014 -- Dec 2014
+\begin{compactitem}
+    \item Modeled the relationship between initial speed, reaction time, and braking
+          distance, proving the ``Two Second Rule'' of the NY DMV.
+    \item Used classical probability to show that safe following distance increases
+          in adverse weather conditions.
+\end{compactitem}
+\textbf{Advisor: Dr. David Waldman}\\
+Department of Science, CUNY BMCC
+\end{minipage}
+
+\end{flushleft}
+
+% ==================== WORK EXPERIENCE ====================
+\begin{flushleft}
+\faSuitcase\quad\textbf{WORK EXPERIENCE}\\[4pt]
+
+\noindent\begin{minipage}{\linewidth}
+\textbf{Computer Analyst/Programmer}\hfill Jan 2024 -- Present
+\begin{compactitem}
+    \item Design, code, test, and debug software applications based on specified requirements.
+    \item Analyze user requirements and convert them into technical specifications for development.
+    \item Design and maintain databases, including data modeling and optimization.
+    \item Identify and resolve software defects or issues promptly.
+    \item Work closely with analysts and project managers to ensure successful project delivery.
+    \item Create and maintain documentation for code, processes, and procedures.
+    \item Adhere to security best practices and ensure all applications meet security standards.
+    \item Participate in code reviews to ensure code quality and adherence to coding standards.
+    \item Attain knowledge of the build and deployment workflow using Jenkins and Rancher.
+    \item Collaborate with relevant teams to integrate applications with the Advanced Distribution Management System (ADMS).
+\end{compactitem}
+United States Postal Service (USPS)
+\end{minipage}
+
+\vspace{8pt}
+
+\noindent\begin{minipage}{\linewidth}
+\textbf{Computer Analyst/Programmer Associate}\hfill Jun 2023 -- Jan 2024
+\begin{compactitem}
+    \item Design, develop, test, and maintain Java-based software applications to meet business requirements.
+    \item Collaborate with business analysts and end-users to gather and document software requirements.
+    \item Write clean, efficient, maintainable code following object-oriented principles and design patterns.
+    \item Perform unit testing and debugging to ensure software functionality and performance.
+    \item Participate in code reviews and provide constructive feedback to improve code quality.
+    \item Assist in preparing technical documentation, user manuals, and system documentation.
+    \item Provide newcomers with onboarding documentation and environment setup guidance.
+\end{compactitem}
+United States Postal Service (USPS)
+\end{minipage}
+
+\vspace{8pt}
+
+\noindent\begin{minipage}{\linewidth}
+\textbf{Substitute Teacher}\hfill Oct 2020 -- May 2023
+\begin{compactitem}
+    \item Deliver instructional and classroom management processes for assigned teachers.
+    \item Adhere to the curriculum and lesson plans assigned by the regular teacher.
+    \item Oversee students outside the classroom, including in the hallways and cafeteria.
+    \item Take attendance and document daily notes.
+\end{compactitem}
+NYC Department of Education
+\end{minipage}
+
+\vspace{8pt}
+
+\noindent\begin{minipage}{\linewidth}
+\textbf{Guest Teacher --- Mathematics \& Life Science}\hfill Sep 2022
+\begin{compactitem}
+    \item Taught 7th-grade Algebra and Life Science and 8th-grade Algebra.
+    \item Assigned and evaluated homework and assessments; provided constructive feedback.
+\end{compactitem}
+Garden School
+\end{minipage}
+
+\vspace{8pt}
+
+\noindent\begin{minipage}{\linewidth}
+\textbf{Graduate Teaching Grader}\hfill Jan 2022 -- May 2022
+\begin{compactitem}
+    \item Assisted a faculty member in the non-instructional aspects of course teaching.
+    \item Graded quizzes and tests; provided feedback to students.
+    \item Held office hours via Zoom; entered grades into WebcoursesUCF.
+\end{compactitem}
+Department of Mathematics, University of Central Florida
+\end{minipage}
+
+\vspace{8pt}
+
+\noindent\begin{minipage}{\linewidth}
+\textbf{Graduate Teaching Assistant}\hfill Jan 2022 -- May 2022
+\begin{compactitem}
+    \item Assisted students in setting up accounts with ALEKS, WebAssign, and other platforms.
+    \item Answered queries during Open Lab sessions; delivered short lectures when requested.
+    \item Suggested supplementary resources including videos, books, and online materials.
+    \item Performed proctoring duties during exams when needed.
+\end{compactitem}
+Mathematics Assistance \& Learning Lab (MALL), University of Central Florida
+\end{minipage}
+
+\vspace{8pt}
+
+\noindent\begin{minipage}{\linewidth}
+\textbf{Mathematics Tutor --- ASAP Program}\hfill Jan 2020 -- May 2020
+\begin{compactitem}
+    \item Tutored approximately 30 college students per semester in Algebra, Quantitative
+          Reasoning, Calculus, Differential Equations, and Physics.
+    \item Served as a liaison between professors and students; provided progress updates.
+\end{compactitem}
+Department of Mathematics, CUNY BMCC
+\end{minipage}
+
+\vspace{8pt}
+
+\noindent\begin{minipage}{\linewidth}
+\textbf{College Assistant --- Computer Lab}\hfill Sep 2019 -- Mar 2020
+\begin{compactitem}
+    \item Patched software and installed updates to eliminate security vulnerabilities.
+    \item Removed and replaced malfunctioning hardware components.
+    \item Supported all computer lab operations and assisted non-technical users.
+\end{compactitem}
+Department of Mathematics \& Computer Science, CUNY York College
+\end{minipage}
+
+\vspace{8pt}
+
+\noindent\begin{minipage}{\linewidth}
+\textbf{Adjunct College Lab Technician}\hfill Sep 2017 -- Aug 2019
+\begin{compactitem}
+    \item Taught Calculus I lab sessions per the professor's syllabus using Maple and Desmos.
+    \item Provided visual understanding of theory; evaluated student progress toward objectives.
+    \item Tracked assignments, attendance, and test scores in an online database.
+\end{compactitem}
+Department of Mathematics, CUNY BMCC
+\end{minipage}
+
+\vspace{8pt}
+
+\noindent\begin{minipage}{\linewidth}
+\textbf{Lead Supplemental Instructor}\hfill Jan 2017 -- Aug 2019
+\begin{compactitem}
+    \item Attended all course sessions; facilitated bi-weekly small-group study sessions.
+    \item Prepared structured supplemental instruction covering difficult course material.
+    \item Helped students develop effective study skills and maximize academic potential.
+\end{compactitem}
+Department of Mathematics, CUNY BMCC
+\end{minipage}
+
+\vspace{8pt}
+
+\noindent\begin{minipage}{\linewidth}
+\textbf{Mathematics \& Physics Tutor}\hfill Dec 2015 -- Jan 2018
+\begin{compactitem}
+    \item Tutored students from 5th grade through undergraduate level in mathematics and physics.
+    \item Reviewed curricula topics; assisted with homework, projects, and test preparation.
+    \item Helped students understand key concepts, especially those covered in class.
+\end{compactitem}
+Varsity Tutors
+\end{minipage}
+
+\vspace{8pt}
+
+\noindent\begin{minipage}{\linewidth}
+\textbf{BMCC Immersion Project (Summer Program)}\hfill Jun 2014 -- Jun 2015
+\begin{compactitem}
+    \item Conducted classes of 10--20 students in Basic Arithmetic \& Algebra (MAT 012),
+          Mathematical Literacy (MAT 041), and Elementary Algebra (MAT 051).
+    \item Enabled students to remediate failed courses and reduce required developmental
+          coursework in subsequent semesters.
+\end{compactitem}
+Department of Mathematics, CUNY BMCC
+\end{minipage}
+
+\vspace{8pt}
+
+\noindent\begin{minipage}{\linewidth}
+\textbf{Mathematics Tutor --- Math Lab}\hfill Mar 2014 -- Aug 2015
+\begin{compactitem}
+    \item Tutored approximately 30 college students per semester in Algebra, Quantitative
+          Reasoning, Calculus, Differential Equations, and Physics.
+    \item Served as a liaison between professors and students; provided progress updates.
+\end{compactitem}
+Department of Mathematics, CUNY BMCC
+\end{minipage}
+
+\end{flushleft}
+
+% ==================== AFFILIATIONS ====================
+\begin{flushleft}
+\faUser\quad\textbf{AFFILIATIONS}
+\begin{compactitem}
+    \item American Mathematical Society
+    \item Society of Industrial \& Applied Mathematics
+    \item Phi Theta Kappa
+\end{compactitem}
+\end{flushleft}
+
+% ==================== ACHIEVEMENTS ====================
+\begin{flushleft}
+\faTrophy\quad\textbf{ACHIEVEMENTS}
+\begin{compactitem}
+    \item Dean's List, Fall 2019 --- CUNY York College
+    \item Dean's List, Winter 2015, Spring 2015, Fall 2014 --- CUNY BMCC
+\end{compactitem}
+\end{flushleft}
+
+% ==================== HONORS & AWARDS ====================
+\noindent\begin{minipage}{\linewidth}
+\begin{flushleft}
+\faAward\quad\textbf{HONORS \& AWARDS}
+\begin{compactitem}
+    \item Ernesto Malave Merit Scholarship, University Student Senate (USS) of CUNY
+    \item Guttman Transfer Scholarship, Stella and Charles Guttman Foundation
+    \item Inaugural Inter-University Math Olympiad Champion, University of Dhaka, July 2011
+\end{compactitem}
+\end{flushleft}
+\end{minipage}
+
+% ==================== BROADER IMPACTS ====================
+\begin{flushleft}
+\faTasks\quad\textbf{BROADER IMPACTS}\\[4pt]
+\textbf{Mathematics Stack Exchange}
+\begin{compactitem}
+    \item Contributed 50+ answers to the community.
+\end{compactitem}
+\textbf{Quora}
+\begin{compactitem}
+    \item Contributed approximately 3500 answers in mathematics and computer science.
+    \item Recognized as Top Writer in Calculus, Integration, and other topics.
+    \item Answers featured in Quora Digest multiple times; 4000+ followers.
+\end{compactitem}
+\end{flushleft}
+
+% ==================== TECHNICAL SKILLS ====================
+\begin{flushleft}
+\faCogs\quad\textbf{TECHNICAL SKILLS}\\[6pt]
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+\textbf{Category} & \textbf{Tools \& Technologies}\\
+\midrule
+\textbf{Programming}        & Java, JavaScript, Python, C++, C, SQL, FORTRAN, MASM x86 \\
+\textbf{Frameworks}         & Spring Boot, Spring MVC, Spring Data JPA, Hibernate,
+                              Tkinter, Bootstrap, Tailwind CSS, ReactJS, NextJS, AngularJS \\
+\textbf{Java Technologies}  & Spring, Hibernate, Java Beans \\
+\textbf{Design Patterns}    & MVC, DAO, Singleton, Factory \\
+\textbf{Web Development}    & HTML5, CSS3, SCSS, Bootstrap, Tailwind CSS,
+                              ReactJS, NextJS, JavaScript, TypeScript \\
+\textbf{Database}           & MySQL, SQLite, PostgreSQL, Oracle, SQL Developer \\
+\textbf{Operating Systems}  & Windows, Ubuntu, Kali \\
+\textbf{IDEs}               & Eclipse, IntelliJ, VSCode \\
+\textbf{Defect Tracking}    & JIRA, VersionOne, Bugzilla \\
+\textbf{Version Control}    & GitHub, GitHub Desktop, Git Bash, Tortoise Git \\
+\textbf{Testing}            & JUnit, Mockito, PyTest \\
+\textbf{Web Services}       & REST, Postman \\
+\textbf{Servers}            & Apache Tomcat, Apache Kafka \\
+\textbf{Build}              & Apache Maven \\
+\textbf{Methodologies}      & Agile, Scrum, Test-Driven Development \\
+\textbf{Math Packages}      & Mathematica, Maple, MATLAB \\
+\textbf{Typesetting}        & \LaTeX \\
+\textbf{Image Processing}   & Adobe Photoshop, GIMP, Inkscape \\
+\textbf{3D}                 & Autodesk 3ds Max \\
+\textbf{GUI Framework}      & Qt C++, Tkinter \\
+\bottomrule
+\end{tabularx}
+\end{flushleft}
+
+\end{document}

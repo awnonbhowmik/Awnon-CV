@@ -1,37 +1,67 @@
 # Awnon CV
 
-This repository contains my professionally crafted Curriculum Vitae (CV), written in LaTeX. The CV showcases my academic background, research experience, and professional achievements in a structured and visually appealing format.
+This repository contains my professionally crafted Curriculum Vitae (CV), written in LaTeX. Two variants are maintained:
+
+| File | Description | Engine |
+|------|-------------|--------|
+| [`general CV/main.tex`](general%20CV/main.tex) | General-purpose CV | XeLaTeX |
+| [`Academic CV/teaching_cv.tex`](Academic%20CV/teaching_cv.tex) | Teaching-focused CV for academic roles | pdflatex |
 
 ## Features
 
-- Clean, elegant layout designed for readability and impact.
-- Organized sections for education, research experience, work experience, publications, presentations, technical skills, and more.
-- Incorporates **FontAwesome 5** and **Academicons** for iconography.
-- Bibliography section managed via **BibLaTeX** for easy referencing.
+- Clean, professional layout designed for readability and impact.
+- Two CV variants: a **General CV** and a **Teaching CV** for online adjunct/college roles.
+- Organized sections covering education, research experience, work experience, publications, presentations, technical skills, honors, and more.
+- **FontAwesome 5** and **Academicons** icons in the General CV (requires XeLaTeX).
+- Bibliography managed via **BibLaTeX** with IEEE style, author name highlighting, and automatic sorting by year.
+- Per-project `.latexmkrc` files select the correct engine automatically.
 
-## Getting Started
+## Repository Structure
 
-To compile the LaTeX source into a PDF, follow these steps:
+```
+Awnon-CV/
+├── general CV/
+│   ├── main.tex          # General CV source
+│   ├── pub.bib           # Journal articles
+│   ├── present.bib       # Conference presentations
+│   └── .latexmkrc        # XeLaTeX config
+├── Academic CV/
+│   ├── teaching_cv.tex   # Teaching CV source
+│   └── .latexmkrc        # pdflatex config
+└── .github/workflows/
+    └── build-pdf.yml     # CI/CD workflow
+```
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/awnonbhowmik/Awnon-CV.git
-   ```
-2. Ensure you have an up-to-date LaTeX distribution installed (e.g., TeXLive or MikTeX).
-3. Compile the LaTeX file:
-   ```bash
-   pdflatex main.tex
-   biber main
-   pdflatex main.tex
-   pdflatex main.tex
-   ```
+## Building Locally
+
+Both CVs use `latexmk` with per-project `.latexmkrc` files — no manual engine flags needed.
+
+**General CV** (XeLaTeX + Biber):
+```bash
+cd "general CV"
+latexmk -outdir=out main.tex
+```
+
+**Teaching CV** (pdflatex + Biber):
+```bash
+cd "Academic CV"
+latexmk -outdir=out teaching_cv.tex
+```
+
+Output PDFs are written to the `out/` subdirectory in each folder.
+
+> **VS Code users:** The LaTeX Workshop extension will build automatically on save using the `.latexmkrc` in each project folder.
+
 ## CI/CD
 
-This repository includes a GitHub Actions workflow that automatically compiles the LaTeX source into a PDF on every push to `main`. The built PDF is uploaded as an artifact and published as a [GitHub Release](https://github.com/awnonbhowmik/Awnon-CV/releases/tag/latest).
+A GitHub Actions workflow ([`build-pdf.yml`](.github/workflows/build-pdf.yml)) builds both CVs on every push to `main` and publishes the PDFs to the [latest GitHub Release](https://github.com/awnonbhowmik/Awnon-CV/releases/tag/latest):
+
+| Release File | Source |
+|---|---|
+| `Awnon-Bhowmik-General-CV.pdf` | `general CV/main.tex` |
+| `Awnon-Bhowmik-Teaching-CV.pdf` | `Academic CV/teaching_cv.tex` |
 
 ## Reference Sites
-
-Such beauty could not have been achieved, even with my masterful abilities in LaTeX. Therefore, I must give credit where it’s due. This CV's professional look and feel were inspired by the following resources:
 
 - [Hansen Lab CV Bibliography](http://www.hansenlab.org/cv_bibliography_tex)
 - [StackExchange: Author Name Formatting with BibTeX](https://tex.stackexchange.com/questions/29381/is-it-normal-for-bibtex-to-replace-similar-author-names-with)
@@ -40,6 +70,6 @@ Such beauty could not have been achieved, even with my masterful abilities in La
 
 ## License
 
-© 2025 Awnon Bhowmik. All rights reserved.
+© 2026 Awnon Bhowmik. All rights reserved.
 
 No part of this project may be reproduced, distributed, or transmitted in any form or by any means without the prior written permission of the author.
