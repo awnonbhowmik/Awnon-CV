@@ -28,11 +28,14 @@ jobs:
         with:
           filters: |
             general-cv:
-              - 'general CV/**'
+              - 'general CV/**/*.tex'
+              - 'general CV/**/*.bib'
             teaching-cv:
-              - 'Academic CV/**'
+              - 'Academic CV/**/*.tex'
+              - 'Academic CV/**/*.bib'
             swe-resume:
-              - 'SWE Resume/**'
+              - 'SWE Resume/**/*.tex'
+              - 'SWE Resume/**/*.bib'
 
   # ------------------------------------------------------------------
   # Build jobs: must use ubuntu-latest — xu-cheng/latex-action runs
