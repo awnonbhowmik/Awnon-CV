@@ -10,12 +10,39 @@ permissions:
   contents: write
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
 
+  # ------------------------------------------------------------------
+  # Detect which folders changed
+  # ------------------------------------------------------------------
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      general-cv:   ${{ steps.filter.outputs.general-cv }}
+      teaching-cv:  ${{ steps.filter.outputs.teaching-cv }}
+      swe-resume:   ${{ steps.filter.outputs.swe-resume }}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            general-cv:
+              - 'general CV/**'
+            teaching-cv:
+              - 'Academic CV/**'
+            swe-resume:
+              - 'SWE Resume/**'
+
+  # ------------------------------------------------------------------
+  # Build General CV
+  # ------------------------------------------------------------------
+  build-general-cv:
+    needs: changes
+    if: needs.changes.outputs.general-cv == 'true' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
       - name: Build General CV
         uses: xu-cheng/latex-action@v3
@@ -25,6 +52,23 @@ jobs:
           latexmk_use_xelatex: true
           args: -file-line-error -halt-on-error -interaction=nonstopmode -outdir=out
 
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: General-CV
+          path: "general CV/out/main.pdf"
+          retention-days: 30
+
+  # ------------------------------------------------------------------
+  # Build Teaching CV
+  # ------------------------------------------------------------------
+  build-teaching-cv:
+    needs: changes
+    if: needs.changes.outputs.teaching-cv == 'true' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
       - name: Build Teaching CV
         uses: xu-cheng/latex-action@v3
         with:
@@ -32,6 +76,23 @@ jobs:
           working_directory: "Academic CV"
           latexmk_use_xelatex: false
           args: -file-line-error -halt-on-error -interaction=nonstopmode -outdir=out
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Teaching-CV
+          path: "Academic CV/out/teaching_cv.pdf"
+          retention-days: 30
+
+  # ------------------------------------------------------------------
+  # Build SWE Resume
+  # ------------------------------------------------------------------
+  build-swe-resume:
+    needs: changes
+    if: needs.changes.outputs.swe-resume == 'true' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
       - name: Build SWE Resume
         uses: xu-cheng/latex-action@v3
@@ -41,48 +102,67 @@ jobs:
           latexmk_use_xelatex: true
           args: -file-line-error -halt-on-error -interaction=nonstopmode -outdir=out
 
-      - name: Rename PDFs for release
-        run: |
-          cp "general CV/out/main.pdf" "Awnon-Bhowmik-General-CV.pdf"
-          cp "Academic CV/out/teaching_cv.pdf" "Awnon-Bhowmik-Teaching-CV.pdf"
-          cp "SWE Resume/out/main.pdf" "Awnon-Bhowmik-SWE-Resume.pdf"
-
-      - name: Upload General CV artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: General-CV
-          path: Awnon-Bhowmik-General-CV.pdf
-          retention-days: 30
-
-      - name: Upload Teaching CV artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: Teaching-CV
-          path: Awnon-Bhowmik-Teaching-CV.pdf
-          retention-days: 30
-
-      - name: Upload SWE Resume artifact
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: SWE-Resume
-          path: Awnon-Bhowmik-SWE-Resume.pdf
+          path: "SWE Resume/out/main.pdf"
           retention-days: 30
+
+  # ------------------------------------------------------------------
+  # Release — runs if at least one build job succeeded
+  # ------------------------------------------------------------------
+  release:
+    needs: [build-general-cv, build-teaching-cv, build-swe-resume]
+    if: |
+      always() && (
+        needs.build-general-cv.result  == 'success' ||
+        needs.build-teaching-cv.result == 'success' ||
+        needs.build-swe-resume.result  == 'success'
+      )
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download General CV
+        uses: actions/download-artifact@v4
+        with:
+          name: General-CV
+          path: artifacts/general-cv/
+        continue-on-error: true
+
+      - name: Download Teaching CV
+        uses: actions/download-artifact@v4
+        with:
+          name: Teaching-CV
+          path: artifacts/teaching-cv/
+        continue-on-error: true
+
+      - name: Download SWE Resume
+        uses: actions/download-artifact@v4
+        with:
+          name: SWE-Resume
+          path: artifacts/swe-resume/
+        continue-on-error: true
+
+      - name: Rename PDFs
+        run: |
+          mkdir -p release
+          [ -f artifacts/general-cv/main.pdf ]        && cp artifacts/general-cv/main.pdf        release/Awnon-Bhowmik-General-CV.pdf  || true
+          [ -f artifacts/teaching-cv/teaching_cv.pdf ] && cp artifacts/teaching-cv/teaching_cv.pdf release/Awnon-Bhowmik-Teaching-CV.pdf || true
+          [ -f artifacts/swe-resume/main.pdf ]         && cp artifacts/swe-resume/main.pdf         release/Awnon-Bhowmik-SWE-Resume.pdf  || true
+          ls -1 release/*.pdf || echo "No PDFs found"
 
       - name: Release PDFs
         uses: softprops/action-gh-release@v2
         with:
           tag_name: latest
           name: Latest CV Build
-          files: |
-            Awnon-Bhowmik-General-CV.pdf
-            Awnon-Bhowmik-Teaching-CV.pdf
-            Awnon-Bhowmik-SWE-Resume.pdf
+          files: release/*.pdf
           body: |
             Automated PDF build from the latest commit on `main`.
 
             | File | Description |
             |------|-------------|
-            | `Awnon-Bhowmik-General-CV.pdf` | General CV (`general CV/main.tex`) |
+            | `Awnon-Bhowmik-General-CV.pdf`  | General CV (`general CV/main.tex`) |
             | `Awnon-Bhowmik-Teaching-CV.pdf` | Teaching CV (`Academic CV/teaching_cv.tex`) |
-            | `Awnon-Bhowmik-SWE-Resume.pdf` | SWE Resume (`SWE Resume/main.tex`) |
+            | `Awnon-Bhowmik-SWE-Resume.pdf`  | SWE Resume (`SWE Resume/main.tex`) |
           make_latest: true
