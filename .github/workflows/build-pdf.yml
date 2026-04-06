@@ -35,6 +35,13 @@ jobs:
               - 'SWE Resume/**'
 
   # ------------------------------------------------------------------
+  # Build jobs: must use ubuntu-latest — xu-cheng/latex-action runs
+  # inside a Docker container, which is only supported on Linux runners.
+  # The changes and release jobs use shell: bash so they are
+  # cross-platform (Linux, macOS, Windows via Git Bash).
+  # ------------------------------------------------------------------
+
+  # ------------------------------------------------------------------
   # Build General CV
   # ------------------------------------------------------------------
   build-general-cv:
@@ -144,11 +151,12 @@ jobs:
         continue-on-error: true
 
       - name: Rename PDFs
+        shell: bash
         run: |
           mkdir -p release
-          [ -f artifacts/general-cv/main.pdf ]        && cp artifacts/general-cv/main.pdf        release/Awnon-Bhowmik-General-CV.pdf  || true
-          [ -f artifacts/teaching-cv/teaching_cv.pdf ] && cp artifacts/teaching-cv/teaching_cv.pdf release/Awnon-Bhowmik-Teaching-CV.pdf || true
-          [ -f artifacts/swe-resume/main.pdf ]         && cp artifacts/swe-resume/main.pdf         release/Awnon-Bhowmik-SWE-Resume.pdf  || true
+          [ -f artifacts/general-cv/main.pdf ]         && cp artifacts/general-cv/main.pdf         release/Awnon-Bhowmik-General-CV.pdf  || true
+          [ -f artifacts/teaching-cv/teaching_cv.pdf ] && cp artifacts/teaching-cv/teaching_cv.pdf  release/Awnon-Bhowmik-Teaching-CV.pdf || true
+          [ -f artifacts/swe-resume/main.pdf ]         && cp artifacts/swe-resume/main.pdf          release/Awnon-Bhowmik-SWE-Resume.pdf  || true
           ls -1 release/*.pdf || echo "No PDFs found"
 
       - name: Release PDFs
