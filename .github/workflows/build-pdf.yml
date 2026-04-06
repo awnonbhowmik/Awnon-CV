@@ -33,10 +33,19 @@ jobs:
           latexmk_use_xelatex: false
           args: -file-line-error -halt-on-error -interaction=nonstopmode -outdir=out
 
+      - name: Build SWE Resume
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          working_directory: "SWE Resume"
+          latexmk_use_xelatex: true
+          args: -file-line-error -halt-on-error -interaction=nonstopmode -outdir=out
+
       - name: Rename PDFs for release
         run: |
           cp "general CV/out/main.pdf" "Awnon-Bhowmik-General-CV.pdf"
           cp "Academic CV/out/teaching_cv.pdf" "Awnon-Bhowmik-Teaching-CV.pdf"
+          cp "SWE Resume/out/main.pdf" "Awnon-Bhowmik-SWE-Resume.pdf"
 
       - name: Upload General CV artifact
         uses: actions/upload-artifact@v4
@@ -52,6 +61,13 @@ jobs:
           path: Awnon-Bhowmik-Teaching-CV.pdf
           retention-days: 30
 
+      - name: Upload SWE Resume artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: SWE-Resume
+          path: Awnon-Bhowmik-SWE-Resume.pdf
+          retention-days: 30
+
       - name: Release PDFs
         uses: softprops/action-gh-release@v2
         with:
@@ -60,6 +76,7 @@ jobs:
           files: |
             Awnon-Bhowmik-General-CV.pdf
             Awnon-Bhowmik-Teaching-CV.pdf
+            Awnon-Bhowmik-SWE-Resume.pdf
           body: |
             Automated PDF build from the latest commit on `main`.
 
@@ -67,4 +84,5 @@ jobs:
             |------|-------------|
             | `Awnon-Bhowmik-General-CV.pdf` | General CV (`general CV/main.tex`) |
             | `Awnon-Bhowmik-Teaching-CV.pdf` | Teaching CV (`Academic CV/teaching_cv.tex`) |
+            | `Awnon-Bhowmik-SWE-Resume.pdf` | SWE Resume (`SWE Resume/main.tex`) |
           make_latest: true
