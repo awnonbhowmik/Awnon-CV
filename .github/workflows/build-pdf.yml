@@ -2,9 +2,13 @@ name: Build LaTeX PDFs
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
+
+# Cancel any in-progress run on the same branch when a new push arrives
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: write
@@ -12,14 +16,15 @@ permissions:
 jobs:
 
   # ------------------------------------------------------------------
-  # Detect which folders changed
+  # Detect which folders have relevant changes.
+  # Workflow file changes trigger a full rebuild of all three.
   # ------------------------------------------------------------------
   changes:
     runs-on: ubuntu-latest
     outputs:
-      general-cv:   ${{ steps.filter.outputs.general-cv }}
-      teaching-cv:  ${{ steps.filter.outputs.teaching-cv }}
-      swe-resume:   ${{ steps.filter.outputs.swe-resume }}
+      general-cv:  ${{ steps.filter.outputs.general-cv }}
+      teaching-cv: ${{ steps.filter.outputs.teaching-cv }}
+      swe-resume:  ${{ steps.filter.outputs.swe-resume }}
     steps:
       - uses: actions/checkout@v4
 
@@ -30,144 +35,145 @@ jobs:
             general-cv:
               - 'general CV/**/*.tex'
               - 'general CV/**/*.bib'
+              - '.github/workflows/build-pdf.yml'
             teaching-cv:
               - 'Academic CV/**/*.tex'
               - 'Academic CV/**/*.bib'
+              - '.github/workflows/build-pdf.yml'
             swe-resume:
               - 'SWE Resume/**/*.tex'
               - 'SWE Resume/**/*.bib'
+              - '.github/workflows/build-pdf.yml'
 
   # ------------------------------------------------------------------
-  # Build jobs: must use ubuntu-latest — xu-cheng/latex-action runs
-  # inside a Docker container, which is only supported on Linux runners.
-  # The changes and release jobs use shell: bash so they are
-  # cross-platform (Linux, macOS, Windows via Git Bash).
+  # Build the matrix dynamically so only changed documents are built.
+  # matrix context is unavailable in job-level if conditions, so we
+  # compute a filtered JSON array here and pass it to the build job.
   # ------------------------------------------------------------------
-
-  # ------------------------------------------------------------------
-  # Build General CV
-  # ------------------------------------------------------------------
-  build-general-cv:
+  compute-matrix:
     needs: changes
-    if: needs.changes.outputs.general-cv == 'true' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - name: Build filtered matrix
+        id: set-matrix
+        shell: bash
+        run: |
+          ALL='[
+            {
+              "name":        "General CV",
+              "filter":      "general-cv",
+              "artifact":    "General-CV",
+              "working_dir": "general CV",
+              "root_file":   "main.tex",
+              "use_xelatex": "true",
+              "output_pdf":  "main.pdf",
+              "release_pdf": "Awnon-Bhowmik-General-CV.pdf"
+            },
+            {
+              "name":        "Teaching CV",
+              "filter":      "teaching-cv",
+              "artifact":    "Teaching-CV",
+              "working_dir": "Academic CV",
+              "root_file":   "teaching_cv.tex",
+              "use_xelatex": "false",
+              "output_pdf":  "teaching_cv.pdf",
+              "release_pdf": "Awnon-Bhowmik-Teaching-CV.pdf"
+            },
+            {
+              "name":        "SWE Resume",
+              "filter":      "swe-resume",
+              "artifact":    "SWE-Resume",
+              "working_dir": "SWE Resume",
+              "root_file":   "main.tex",
+              "use_xelatex": "true",
+              "output_pdf":  "main.pdf",
+              "release_pdf": "Awnon-Bhowmik-SWE-Resume.pdf"
+            }
+          ]'
+
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            MATRIX="$ALL"
+          else
+            MATRIX="[]"
+            [[ "${{ needs.changes.outputs.general-cv }}"  == "true" ]] && MATRIX=$(echo "$MATRIX" | jq ". += [$(echo "$ALL" | jq '.[0]')]")
+            [[ "${{ needs.changes.outputs.teaching-cv }}" == "true" ]] && MATRIX=$(echo "$MATRIX" | jq ". += [$(echo "$ALL" | jq '.[1]')]")
+            [[ "${{ needs.changes.outputs.swe-resume }}"  == "true" ]] && MATRIX=$(echo "$MATRIX" | jq ". += [$(echo "$ALL" | jq '.[2]')]")
+          fi
+
+          echo "matrix=$(echo "$MATRIX" | jq -c .)" >> "$GITHUB_OUTPUT"
+
+  # ------------------------------------------------------------------
+  # Build — skipped entirely when nothing changed.
+  # NOTE: xu-cheng/latex-action runs in Docker, so ubuntu-latest is
+  # required. The release job uses shell: bash and is compatible with
+  # Linux, macOS, and Windows runners.
+  # ------------------------------------------------------------------
+  build:
+    needs: compute-matrix
+    if: needs.compute-matrix.outputs.matrix != '[]'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include: ${{ fromJSON(needs.compute-matrix.outputs.matrix) }}
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build General CV
+      - name: Build ${{ matrix.name }}
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: main.tex
-          working_directory: "general CV"
-          latexmk_use_xelatex: true
+          root_file:           ${{ matrix.root_file }}
+          working_directory:   ${{ matrix.working_dir }}
+          latexmk_use_xelatex: ${{ matrix.use_xelatex }}
           args: -file-line-error -halt-on-error -interaction=nonstopmode -outdir=out
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: General-CV
-          path: "general CV/out/main.pdf"
+          name:           ${{ matrix.artifact }}
+          path:           "${{ matrix.working_dir }}/out/${{ matrix.output_pdf }}"
           retention-days: 30
 
-  # ------------------------------------------------------------------
-  # Build Teaching CV
-  # ------------------------------------------------------------------
-  build-teaching-cv:
-    needs: changes
-    if: needs.changes.outputs.teaching-cv == 'true' || github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Build Teaching CV
-        uses: xu-cheng/latex-action@v3
-        with:
-          root_file: teaching_cv.tex
-          working_directory: "Academic CV"
-          latexmk_use_xelatex: false
-          args: -file-line-error -halt-on-error -interaction=nonstopmode -outdir=out
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: Teaching-CV
-          path: "Academic CV/out/teaching_cv.pdf"
-          retention-days: 30
+      - name: Write job summary
+        shell: bash
+        run: |
+          echo "### ${{ matrix.name }} built successfully" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Field | Value |"                         >> "$GITHUB_STEP_SUMMARY"
+          echo "|-------|-------|"                         >> "$GITHUB_STEP_SUMMARY"
+          echo "| Artifact | \`${{ matrix.artifact }}\`"        >> "$GITHUB_STEP_SUMMARY"
+          echo "| Release file | \`${{ matrix.release_pdf }}\`" >> "$GITHUB_STEP_SUMMARY"
 
   # ------------------------------------------------------------------
-  # Build SWE Resume
-  # ------------------------------------------------------------------
-  build-swe-resume:
-    needs: changes
-    if: needs.changes.outputs.swe-resume == 'true' || github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Build SWE Resume
-        uses: xu-cheng/latex-action@v3
-        with:
-          root_file: main.tex
-          working_directory: "SWE Resume"
-          latexmk_use_xelatex: true
-          args: -file-line-error -halt-on-error -interaction=nonstopmode -outdir=out
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: SWE-Resume
-          path: "SWE Resume/out/main.pdf"
-          retention-days: 30
-
-  # ------------------------------------------------------------------
-  # Release — runs if at least one build job succeeded
+  # Release — runs when at least one build succeeds
   # ------------------------------------------------------------------
   release:
-    needs: [build-general-cv, build-teaching-cv, build-swe-resume]
-    if: |
-      always() && (
-        needs.build-general-cv.result  == 'success' ||
-        needs.build-teaching-cv.result == 'success' ||
-        needs.build-swe-resume.result  == 'success'
-      )
+    needs: build
+    if: always() && needs.build.result == 'success'
     runs-on: ubuntu-latest
     steps:
-      - name: Download General CV
+      - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
-          name: General-CV
-          path: artifacts/general-cv/
-        continue-on-error: true
+          path:           artifacts/
+          merge-multiple: false
 
-      - name: Download Teaching CV
-        uses: actions/download-artifact@v4
-        with:
-          name: Teaching-CV
-          path: artifacts/teaching-cv/
-        continue-on-error: true
-
-      - name: Download SWE Resume
-        uses: actions/download-artifact@v4
-        with:
-          name: SWE-Resume
-          path: artifacts/swe-resume/
-        continue-on-error: true
-
-      - name: Rename PDFs
+      - name: Rename PDFs for release
         shell: bash
         run: |
           mkdir -p release
-          [ -f artifacts/general-cv/main.pdf ]         && cp artifacts/general-cv/main.pdf         release/Awnon-Bhowmik-General-CV.pdf  || true
-          [ -f artifacts/teaching-cv/teaching_cv.pdf ] && cp artifacts/teaching-cv/teaching_cv.pdf  release/Awnon-Bhowmik-Teaching-CV.pdf || true
-          [ -f artifacts/swe-resume/main.pdf ]         && cp artifacts/swe-resume/main.pdf          release/Awnon-Bhowmik-SWE-Resume.pdf  || true
+          [ -f "artifacts/General-CV/main.pdf" ]         && cp "artifacts/General-CV/main.pdf"         release/Awnon-Bhowmik-General-CV.pdf  || true
+          [ -f "artifacts/Teaching-CV/teaching_cv.pdf" ] && cp "artifacts/Teaching-CV/teaching_cv.pdf" release/Awnon-Bhowmik-Teaching-CV.pdf || true
+          [ -f "artifacts/SWE-Resume/main.pdf" ]         && cp "artifacts/SWE-Resume/main.pdf"         release/Awnon-Bhowmik-SWE-Resume.pdf  || true
           ls -1 release/*.pdf || echo "No PDFs found"
 
       - name: Release PDFs
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: latest
-          name: Latest CV Build
-          files: release/*.pdf
+          tag_name:    latest
+          name:        Latest CV Build
+          files:       release/*.pdf
           body: |
             Automated PDF build from the latest commit on `main`.
 
@@ -177,3 +183,13 @@ jobs:
             | `Awnon-Bhowmik-Teaching-CV.pdf` | Teaching CV (`Academic CV/teaching_cv.tex`) |
             | `Awnon-Bhowmik-SWE-Resume.pdf`  | SWE Resume (`SWE Resume/main.tex`) |
           make_latest: true
+
+      - name: Write release summary
+        shell: bash
+        run: |
+          echo "### Released to \`latest\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "| File |"                   >> "$GITHUB_STEP_SUMMARY"
+          echo "|------|"                   >> "$GITHUB_STEP_SUMMARY"
+          for f in release/*.pdf; do
+            echo "| \`$(basename "$f")\` |" >> "$GITHUB_STEP_SUMMARY"
+          done
