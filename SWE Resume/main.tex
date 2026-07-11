@@ -2,7 +2,8 @@
 
 \usepackage[letterpaper,
   top=0.6in, bottom=0.6in,
-  left=0.65in, right=0.65in]{geometry}
+  left=0.65in, right=0.65in,
+  headheight=14pt]{geometry}
 
 \usepackage{fontspec}
 \usepackage{fontawesome5}
@@ -52,7 +53,7 @@
 % role line inside an employer block: \role{Title}{Location}{Date range}
 \newcommand{\role}[3]{%
   \vspace{3pt}%
-  \noindent\textit{#1},\ #2\hfill\textit{#3}%
+  \noindent\hspace*{1em}\textit{#1},\ #2\hfill\textit{#3}%
 }
 % -----------------------------------------------------------------------------
 
@@ -140,7 +141,7 @@ collaboration.
 \vspace{8pt}
 
 % --- SS&C ---
-\employer{SS\&C Technologies}{New York, NY}{}
+\employer{SS\&C Technologies}{}{}
 
 \role{Application Developer}{New York, NY}{Mar 2017 -- Mar 2023}
 \begin{compactitem}
@@ -196,7 +197,7 @@ published data-driven study covering 2000--2024.
 
   \item Bhowmik, A., Hasan, M., Saha, M., \& Saha, G.\ (2025). Trends, challenges, and
         socioeconomic impacts of HIV in Bangladesh: A data-driven analysis (2000--2024).
-        \textit{Sexes}, \textit{6}(3), 34.\break
+        \textit{Sexes}, \textit{6}(3), 34.\par\noindent
         \href{https://doi.org/10.3390/sexes6030034}{https://doi.org/10.3390/sexes6030034}
 \end{compactitem}
 
@@ -223,12 +224,12 @@ published data-driven study covering 2000--2024.
 % ============================================================
 \rsection{CERTIFICATIONS \& TRAINING}
 
-\begin{tabularx}{\textwidth}{@{}X l r@{}}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X l r@{}}
   \href{https://www.credly.com/badges/cb4b59be-038c-4bbc-9b98-e30f139395ef/linked_in_profile}%
        {SAS Academic Specialization in Applied Data Analytics}
   & SAS \& CSU Global & 2025 \\[2pt]
   \href{https://www.credly.com/badges/0bed96d9-6f1f-4cc3-9757-bc06ef5f74fe/linked_in_profile}%
-       {SAS Academic Specialization in Business Intelligence \break and Performance Management}
+       {SAS Academic Specialization in Business Intelligence and Performance Management}
   & SAS \& CSU Global & 2025 \\[2pt]
   \href{https://ude.my/UC-0336PVRS}{The Modern Python 3 Bootcamp}
   & Udemy (Colt Steele) & 2019 \\
